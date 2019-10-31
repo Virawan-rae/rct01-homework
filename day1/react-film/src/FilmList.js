@@ -1,28 +1,29 @@
 import React, { Component } from "react";
-import FilmPoster from "./FilmPoster";
-import FilmSummary from "./FilmSummary";
+// import FilmPoster from "./FilmPoster";
+// import FilmSummary from "./FilmSummary";
+import FilmRow from "./FilmRow";
 
-class FlimList extends Component {
+class FilmList extends Component {
   render() {
-    const { films } = this.props;
+    // const { films } = this.props;
+
+    const allFilms = this.props.films.map((film, index) => (
+      <FilmRow
+        className="film-row"
+        key={index}
+        filmTitle={film.title}
+        filmPoster={film.poster_path}
+        filmYear={film.release_date}
+      />
+    ));
+
     return (
       <div className="film-list">
         <div className="section-title">Films</div>
-        <div className="film-details">
-          {films.map(film => {
-            const { id, title, poster_path, release_date } = film;
-            const urlImage = `https://image.tmdb.org/t/p/w780${poster_path}`;
-            return (
-              <div key={id} className="film-row">
-                <FilmPoster image={urlImage} title={title} />
-                <FilmSummary title={title} releaseDate={release_date} />
-              </div>
-            );
-          })}
-        </div>
+        <div className="film-details">{allFilms}</div>
       </div>
     );
   }
 }
 
-export default FlimList;
+export default FilmList;

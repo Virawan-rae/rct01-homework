@@ -6,5 +6,5 @@ import App from "./App";
 import TMDB from "./TMDB";
 import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<App films={TMDB.films} />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 registerServiceWorker();
